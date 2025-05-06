@@ -48,7 +48,7 @@
   text-transform: capitalize;
   padding-left: 2rem;
   color: white;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 .inner-container p {
   font-size: 1.8rem;
@@ -123,13 +123,13 @@
     width: 400px;
     height: 510px;
   }
-  .inner-container{
+  .inner-container {
     width: 400px;
     height: 400px;
     left: -2rem;
     bottom: -6rem;
   }
-  .inner-container h1{
+  .inner-container h1 {
     font-size: 1.5rem;
     padding-left: 3rem;
   }
@@ -141,18 +141,13 @@
   .order {
     flex-direction: column;
   }
-  .order-left{
+  .order-left {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .order-form-container{
+  .order-form-container {
     width: 100%;
-  }
-  .order-text-container{
-
-  }
-  .inner-container{
   }
 }
