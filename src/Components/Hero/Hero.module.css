@@ -1,0 +1,115 @@
+.hero {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-image: url(../../assets/pastries.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.card {
+  width: 400px;
+  height: 500px;
+  background-color: rgba(255, 255, 255, 0.247);
+  color: black;
+  margin-left: 5rem;
+  border-top-right-radius: 30%;
+  border-bottom-left-radius: 30%;
+  padding: 1rem;
+  padding-top: 2rem;
+  box-shadow: 1px 1px 2px rgb(105, 105, 105);
+}
+.card h1 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  font-family: Arial, Helvetica, sans-serif;
+  font-family: Gatefold Demi;
+  color: rgb(48, 47, 47);
+}
+.card p {
+  margin-top: 2rem;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  line-height: 1.3rem;
+}
+.card button {
+  display: block;
+  margin: auto;
+  padding: 0.5rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-family: monospace;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid rgb(48, 47, 47);
+  margin-top: 2rem;
+}
+.swipperBox {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  margin-top: 1.5rem;
+}
+.swipperBox div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 2rem;
+}
+.swipperBox div span:first-child {
+  background-color: brown;
+}
+.swipperBox span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid brown;
+}
+.swipperBox button {
+  display: block;
+  border: none;
+  background-color: brown;
+  color: white;
+  width: 30px;
+  height: 30px;
+  font-size: 1rem;
+  padding: 0.2rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+@media(max-width: 800px){
+  .hero{
+    height: max-content;
+    padding: 1rem;
+  }
+  .card{
+    height: fit-content;
+  }
+  .card h1{
+    font-size: 1.5rem;
+  }
+  .card p{
+    margin-top: 1rem;
+  }
+  .card button{
+    margin-bottom: 0;
+  }
+  .swipperBox{
+    margin-top: 0;
+    padding: 0;
+  }
+}
+
+@media(max-width: 500px){
+  .card{
+    margin-left: 0;
+  }
+}

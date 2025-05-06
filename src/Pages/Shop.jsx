@@ -1,9 +1,14 @@
 import React from "react";
+import Hero from "../Components/Hero/Hero";
+import ItemsCard from "../Components/ItemsCard/ItemsCard";
+import Orders from "../Components/Orders/Orders";
 
 const Shop = () => {
   return (
     <div>
-      <h2>Shop@page.onion</h2>
+      <Hero />
+      <ItemsCard />
+      <Orders />
     </div>
   );
 };

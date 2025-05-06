@@ -1,0 +1,81 @@
+.navbar {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1rem 5rem;
+  background-color: white;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.349);
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+}
+.nav-logo img {
+  width: 30px;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+.nav-logo p {
+  font-size: 1.3rem;
+  font-weight: 800;
+  font-family: monospace;
+  color: black;
+  text-transform: capitalize;
+}
+.nav-list {
+  min-width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-list li {
+  display: inline-block;
+  cursor: pointer;
+}
+.nav-list a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: black;
+}
+.nav-list hr {
+  border: none;
+  width: 80%;
+  height: 3px;
+  border-radius: 10px;
+  background-color: black;
+}
+.auth-cart {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.auth-cart button {
+  width: 100px;
+  height: 35px;
+  outline: none;
+  border: 1px solid #7a7a7a;
+  color: #515151;
+  font-weight: 900;
+  cursor: pointer;
+  border-radius: 20px;
+}
+.auth-cart button:active {
+  background-color: #7a7a7a;
+}
+.nav-counter {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: orange;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: white;
+  margin-left: -35px;
+  margin-top: -27px;
+}

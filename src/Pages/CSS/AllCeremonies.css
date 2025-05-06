@@ -1,0 +1,29 @@
+.ceremony {
+  width: 90%;
+  margin: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: .8rem;
+}
+.ceremony h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+  color: rgb(87, 87, 87);
+}
+.ceremony hr{
+    height: 3px;
+    width: 200px;
+    margin: auto;
+    background-color: rgb(88, 88, 88);
+    border: none;
+    margin-bottom: 3rem;
+}
+.ceremony-container{
+    width: 100%;
+    display: grid;   
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 10px;
+}
