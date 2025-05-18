@@ -1,0 +1,154 @@
+/* VendorDashboard.css */
+
+.dashboard-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: floralwhite;
+}
+
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1rem;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 3rem;
+  color: #cee4fd;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-style: oblique;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 900;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  transition: background-color 0.3s;
+  color: #cee4fd;
+}
+
+.nav-links a:hover {
+  background-color: orangered;
+}
+
+.hamburger {
+  width: 30px;
+  height: 20px;
+  background-color: white;
+  padding: .1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  display: none ;
+}
+.hamburger span {
+  width: 100%;
+  height: 3px;
+  display: block;
+  background-color: black;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: calc(100% - 250px);
+  margin-left: auto;
+}
+
+.bar-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  width: 100%;
+  padding: 20px;
+  border-radius: 8px;
+  border-bottom: 2px solid black;
+}
+
+.bar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50px;
+  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 700;
+  color: black;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.bar {
+  width: 100%;
+  background-color: black;
+  transition: height 0.3s ease;
+  border-radius: 4px 4px 0 0;
+}
+
+.label {
+  margin-top: 8px;
+  font-size: 12px;
+  text-align: center;
+}
+.analytics-container {
+  width: 100%;
+}
+@media (max-width: 500px) {
+  .main-content {
+    max-width: calc(100vw-250px);
+    padding: 0;
+  }
+  .sidebar {
+    position: fixed;
+    height: max-content;
+    width: 100%;
+    flex-direction: row;
+    padding: 0.5rem;
+    align-items: center;
+  }
+  .nav-links {
+    display: none;
+  }
+  .logo {
+    margin-bottom: 0;
+    text-decoration: none;
+  }
+  .hamburger{
+    display: flex;
+    position: absolute;
+    right: 10px;
+  }
+  .dashboard-container {
+    align-items: center;
+    flex-direction: column;
+  }
+  .main-content {
+    width: 100%;
+    margin-top: 3rem;
+  }
+}

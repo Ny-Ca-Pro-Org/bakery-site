@@ -41,8 +41,10 @@ const Orders = () => {
           </div>
         </div>
       </div>
-      <div className="order-form-container">
-        <h2>Place Your Order</h2>
+      <div className="order-right">
+      <h2>Place Your Order</h2>
+
+        <div className="order-form-container">
         <form onSubmit={handleSubmit} className="order-form">
           <label>
             Full Name:
@@ -89,6 +91,7 @@ const Orders = () => {
 
           <button type="submit">Submit Order</button>
         </form>
+      </div>
       </div>
     </div>
   );
