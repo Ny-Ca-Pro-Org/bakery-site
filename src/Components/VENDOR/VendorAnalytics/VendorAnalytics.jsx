@@ -1,6 +1,15 @@
 // import React from "react";
 // import "./VendorAnalytics.css";
-import { FaShoppingCart, FaDollarSign, FaChartLine } from "react-icons/fa";
+import { Link } from "react-router";
+import {
+  FaTshirt,
+  FaPlus,
+  FaChartBar,
+  FaSignOutAlt,
+  FaShoppingCart,
+  FaDollarSign,
+  FaChartLine,
+} from "react-icons/fa";
 import {
   LineChart,
   Line,
@@ -24,6 +33,33 @@ const data = [
 export default function VendorAnalytics() {
   return (
     <div className="dash-container">
+      <aside className="sidebar">
+        <h2 className="logo">NyCa-Pro Bakery</h2>
+        <nav className="nav-links">
+          <Link to="/admin-onion-dashboard">
+            <FaShoppingCart /> <span>Overview</span>
+          </Link>
+          <Link to="/admin-onion-dashboard/product">
+            <FaTshirt /> <span>My Products</span>
+          </Link>
+          <Link to="/admin-onion-dashboard/add-product">
+            <FaPlus /> <span>Add Product</span>
+          </Link>
+          <Link to="/admin-onion-dashboard/analytics">
+            <FaChartBar /> <span>Analytics</span>
+          </Link>
+
+          <a href="/logout">
+            <FaSignOutAlt /> <span>Logout</span>
+          </a>
+        </nav>
+        <div className="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </aside>
       <h2 className="dashboard-title">Sales Overview</h2>
       <div className="chart-container">
         <ResponsiveContainer width="100%" height={300} className="dosomething">
@@ -71,4 +107,3 @@ export default function VendorAnalytics() {
     </div>
   );
 }
-

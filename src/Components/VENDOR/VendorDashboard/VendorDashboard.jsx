@@ -22,12 +22,15 @@ const VendorDashboard = () => {
   return (
     <div className="dashboard-container ">
       <aside className="sidebar">
-        <h2 className="logo">frostyFashion</h2>
+        <h2 className="logo">NyCa-Pro Bakery</h2>
         <nav className="nav-links">
+          <Link to="/admin-onion-dashboard">
+          <FaShoppingCart />   <span>Overview</span>
+          </Link>
           <Link to="/admin-onion-dashboard/product">
             <FaTshirt /> <span>My Products</span>
           </Link>
-          <Link to="/admin-onion-dashboard/add-product'">
+          <Link to="/admin-onion-dashboard/add-product">
             <FaPlus /> <span>Add Product</span>
           </Link>
           <Link to="/admin-onion-dashboard/analytics">

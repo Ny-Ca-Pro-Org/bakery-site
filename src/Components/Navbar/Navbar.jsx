@@ -9,7 +9,7 @@ const Navbar = () => {
     <div className="navbar">
       <div className="nav-logo">
         <img src={logo} alt="logo" />
-        <p>nyCa@pro.onion bakery</p>
+        <p>NyCa-Pro Bakery</p>
       </div>
       <ul className="nav-list">
         <li onClick={() => setMenu("shop")}>

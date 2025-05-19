@@ -18,6 +18,7 @@ import womenBanner from "./Assets/banner_women.png";
 import kidsBanner from "./Assets/banner_kids.png";
 import VendorAnalytics from "./Components/VENDOR/VendorAnalytics/VendorAnalytics";
 import VendorProduct from "./Components/VENDOR/VendorProducts/VendorProduct";
+import AddVendorProduct from "./Components/VENDOR/AddVendorProduct/AddVendorProduct";
 import Collections from "./Components/Collections/Collections";
 
 function LayoutWrapper() {
@@ -50,6 +51,10 @@ function LayoutWrapper() {
         <Route
           path="/admin-onion-dashboard/product"
           element={<VendorProduct />}
+        />
+        <Route
+          path="/admin-onion-dashboard/add-product"
+          element={<AddVendorProduct />}
         />
       </Routes>
       {!isAdminRoute && <Footer />}
