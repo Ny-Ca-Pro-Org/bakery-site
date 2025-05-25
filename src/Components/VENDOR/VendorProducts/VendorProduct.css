@@ -7,7 +7,7 @@
 .product-page h1 {
   text-align: center;
   margin-bottom: 2rem;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 .product-grid {
@@ -17,7 +17,7 @@
 }
 
 .product-card {
-    width: 100%;
+  width: 100%;
   border: 1px solid #ddd;
   padding: 1rem;
   border-radius: 8px;
@@ -58,11 +58,13 @@
 }
 
 .edit-btn {
-  background-color: #007bff;
-  color: white;
+  color: rgb(131, 34, 34);
 }
 
 .delete-btn {
-  background-color: #dc3545;
-  color: white;
+  color: red;
+}
+.edit-btn svg,
+.delete-btn svg {
+  vertical-align: middle;
 }

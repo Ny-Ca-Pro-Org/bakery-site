@@ -1,23 +1,42 @@
-import React, { createContext, useState } from "react";
-import allproduct from "../Assets/all_product";
+import React, { createContext, useState, useEffect } from "react";
+import axios from "axios";
 
 export const ShopContext = createContext(null);
-let all_product = allproduct;
 
-const getDefaultCart = () => {
-  let cart = {};
-  for (let index = 0; index < all_product.length + 1; index++) {
-    cart[index] = 0;
-  }
+const getDefaultCart = (products) => {
+  const cart = {};
+  products.forEach((product) => {
+    cart[product.id] = 0;
+  });
   return cart;
 };
 
 const ShopContextProvider = (props) => {
-  const [cartItems, setCartItem] = useState(getDefaultCart());
+  const [allProduct, setAllProduct] = useState([]);
+  const [cartItems, setCartItem] = useState({});
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get(
+          "https://nyca-pro-enterprise.onrender.com/products/allproducts"
+        );
+        const products = response.data;
+        setAllProduct(products);
+        setCartItem(getDefaultCart(products));
+        console.log(products);
+      } catch (error) {
+        console.error("Failed to fetch products:", error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   const addToCart = (itemId) => {
     setCartItem((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
   };
+
   const removeFromCart = (itemId) => {
     setCartItem((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
   };
@@ -26,10 +45,12 @@ const ShopContextProvider = (props) => {
     let totalAmount = 0;
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
-        let itemInfo = all_product.find(
+        const itemInfo = allProduct.find(
           (product) => product.id === Number(item)
         );
-        totalAmount += itemInfo.new_price * cartItems[item];
+        if (itemInfo) {
+          totalAmount += itemInfo.new_price * cartItems[item];
+        }
       }
     }
     return totalAmount;
@@ -37,7 +58,7 @@ const ShopContextProvider = (props) => {
 
   const getTotalCartItems = () => {
     let totalItem = 0;
-    for ( const item in cartItems) {
+    for (const item in cartItems) {
       if (cartItems[item] > 0) {
         totalItem += cartItems[item];
       }
@@ -48,7 +69,8 @@ const ShopContextProvider = (props) => {
   const contextValue = {
     getTotalCartItems,
     getTotalCartAmount,
-    all_product,
+    allProduct,
+    setAllProduct,
     cartItems,
     addToCart,
     removeFromCart,

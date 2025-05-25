@@ -45,6 +45,9 @@ export default function VendorAnalytics() {
           <Link to="/admin-onion-dashboard/add-product">
             <FaPlus /> <span>Add Product</span>
           </Link>
+          <Link to="/admin-onion-dashboard/orders">
+            <FaPlus /> <span>Orders </span>
+          </Link>
           <Link to="/admin-onion-dashboard/analytics">
             <FaChartBar /> <span>Analytics</span>
           </Link>

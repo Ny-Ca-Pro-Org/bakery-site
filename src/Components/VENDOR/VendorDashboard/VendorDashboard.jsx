@@ -25,13 +25,16 @@ const VendorDashboard = () => {
         <h2 className="logo">NyCa-Pro Bakery</h2>
         <nav className="nav-links">
           <Link to="/admin-onion-dashboard">
-          <FaShoppingCart />   <span>Overview</span>
+            <FaShoppingCart /> <span>Overview</span>
           </Link>
           <Link to="/admin-onion-dashboard/product">
             <FaTshirt /> <span>My Products</span>
           </Link>
           <Link to="/admin-onion-dashboard/add-product">
             <FaPlus /> <span>Add Product</span>
+          </Link>
+          <Link to="/admin-onion-dashboard/orders">
+            <FaPlus /> <span>Orders </span>
           </Link>
           <Link to="/admin-onion-dashboard/analytics">
             <FaChartBar /> <span>Analytics</span>

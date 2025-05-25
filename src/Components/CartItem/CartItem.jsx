@@ -93,13 +93,7 @@ const CartItem = () => {
           </div>
           <button onClick={sendOrderToWhatsApp}>Proceed to checkout</button>
         </div>
-        <div className="promo-code">
-          <p>enter your promo code here</p>
-          <div className="promo-box">
-            <input type="text" placeholder="promo code" />
-            <button>submit</button>
-          </div>
-        </div>
+        
       </div>
     </div>
   );

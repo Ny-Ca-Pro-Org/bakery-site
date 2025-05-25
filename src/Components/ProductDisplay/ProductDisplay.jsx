@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { ShopContext } from "../../Context/ShopContext";
 
 const ProductDisplay = (props) => {
-  const { product } = props;
+  const product = props;
   const { addToCart } = useContext(ShopContext);
   return (
     <div className="product-display">
@@ -14,13 +14,14 @@ const ProductDisplay = (props) => {
           <img src={product.image} alt="product image" />
           <img src={product.image} alt="product image" />
           <img src={product.image} alt="product image" />
+          <img src={product.image} alt="product image" />
         </div>
         <div className="display-image">
-          <img className="main-image" src={product.image} alt="product ima" />
+          <img className="main-image" src={props.image} alt="product image" />
         </div>
       </div>
       <div className="product-display-right">
-        <h1>{product.name}</h1>
+        <h1>{props.name}</h1>
         <div className="display-right-star">
           <img src={star_icon} alt="stars" />
           <img src={star_icon} alt="stars" />
@@ -29,7 +30,7 @@ const ProductDisplay = (props) => {
           <img src={star_dull_icon} alt="stars" />
         </div>
         <div className="right-prices">
-          <div className="new-price">GHC {product.new_price}</div>
+          <div className="new-price">GHC {props.price}</div>
         </div>
         <div className="right-description">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum, sint
@@ -38,10 +39,10 @@ const ProductDisplay = (props) => {
           velit in consectetur dolore. Quidem sequi unde atque totam fugit
           rerum.
         </div>
-        
+
         <button
           onClick={() => {
-            addToCart(product.id);
+            addToCart(props.id);
           }}
         >
           ADD TO CART

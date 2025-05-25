@@ -1,37 +1,37 @@
 import React, { useState } from "react";
 import "./AddVendorProduct.css";
 import { Link } from "react-router";
+import axios from "axios";
 import {
   FaTshirt,
   FaPlus,
   FaChartBar,
   FaSignOutAlt,
   FaShoppingCart,
-  FaDollarSign,
-  FaChartLine,
 } from "react-icons/fa";
 
 const AddVendorProduct = () => {
-  const [product, setProduct] = useState({
-    title: "",
-    price: "",
-    category: "birthday",
-    image: null,
-    description: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value, files } = e.target;
-    setProduct((prevProduct) => ({
-      ...prevProduct,
-      [name]: files ? files[0] : value,
-    }));
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(product);
-    alert("Product submitted!");
+    const formData = new FormData(e.target);
+    try {
+      const response = await axios.post(
+        "https://nyca-pro-enterprise.onrender.com/products",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MmRhZjcwMzY5M2ViZWRiZWI1NzkwMSIsImlhdCI6MTc0NzkxMDMzNiwiZXhwIjoxNzQ3OTk2NzM2fQ.Fzs_hIU2vGHODoIU2vUTN3TNn9A_o-96UkA4obDL4qM`,
+          },
+        }
+      );
+
+      alert("Product submitted successfully!");
+      console.log("Response:", response.data);
+    } catch (error) {
+      console.error("Error submitting product:", error);
+      alert("Failed to submit product.");
+    }
   };
 
   return (
@@ -48,77 +48,46 @@ const AddVendorProduct = () => {
           <Link to="/admin-onion-dashboard/add-product">
             <FaPlus /> <span>Add Product</span>
           </Link>
+          <Link to="/admin-onion-dashboard/orders">
+            <FaPlus /> <span>Orders</span>
+          </Link>
           <Link to="/admin-onion-dashboard/analytics">
             <FaChartBar /> <span>Analytics</span>
           </Link>
-
           <a href="/logout">
             <FaSignOutAlt /> <span>Logout</span>
           </a>
         </nav>
-        <div className="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
       </aside>
+
       <h2>Add New Product</h2>
       <form onSubmit={handleSubmit} className="add-product-form">
         <label>
-          Product Title:
-          <input
-            type="text"
-            name="title"
-            value={product.title}
-            onChange={handleChange}
-            required
-          />
+          Product Name:
+          <input type="text" name="name" required />
         </label>
 
         <label>
           Price:
-          <input
-            type="number"
-            name="price"
-            value={product.price}
-            onChange={handleChange}
-            required
-          />
+          <input type="number" name="price" required />
         </label>
 
         <label>
           Category:
-          <select
-            name="category"
-            value={product.category}
-            onChange={handleChange}
-            required
-          >
-            <option value="birthday">Birthday</option>
-            <option value="wedding">Wedding</option>
+          <select name="category" required>
+            <option value="Weddings">Wedding</option>
+            <option value="Birthday">Birthday</option>
           </select>
         </label>
 
         <label>
           Upload Image:
-          <input
-            type="file"
-            name="image"
-            accept="image/*"
-            onChange={handleChange}
-            required
-          />
+          <input type="file" name="image" accept="image/*" required />
         </label>
 
         <label>
-          Product Description:
-          <textarea
-            name="description"
-            value={product.description}
-            onChange={handleChange}
-            required
-          ></textarea>
+          Description:
+          <textarea name="description" required></textarea>
         </label>
 
         <button type="submit">Add Product</button>
@@ -128,3 +97,4 @@ const AddVendorProduct = () => {
 };
 
 export default AddVendorProduct;
+

@@ -10,15 +10,15 @@
 .image-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
   padding-top: .2rem;
 }
 .image-list img {
-  height: 137px;
+  width: 300px;
 }
-.main-image {
+/* .main-image {
   width: 450px;
-}
+} */
 .product-display-right {
   margin: 0 70px;
   display: flex;
@@ -47,8 +47,7 @@
 }
 
 .product-display-right button {
-  padding: 20px 40px;
-  width: 200px;
+  padding: 15px ;
   font-size: 1rem;
   font-weight: 600;
   color: white;
@@ -60,7 +59,7 @@
   transition: 0.2s ease-in-out;
 }
 .product-display-right button:hover{
-  background-color: rgb(31, 1, 61);
+  background-color: #fa6868;
 }
 .display-right-category {
   margin-top: 10px;

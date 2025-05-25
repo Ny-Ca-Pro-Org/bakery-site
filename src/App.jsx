@@ -13,13 +13,11 @@ import Cart from "./Pages/Cart";
 import Auth from "./Pages/Auth";
 import Signup from "./Pages/Signup";
 import AdminDashboard from "./Pages/AdminDashboard";
-import menBanner from "./Assets/banner_mens.png";
-import womenBanner from "./Assets/banner_women.png";
-import kidsBanner from "./Assets/banner_kids.png";
 import VendorAnalytics from "./Components/VENDOR/VendorAnalytics/VendorAnalytics";
 import VendorProduct from "./Components/VENDOR/VendorProducts/VendorProduct";
 import AddVendorProduct from "./Components/VENDOR/AddVendorProduct/AddVendorProduct";
 import Collections from "./Components/Collections/Collections";
+import VendorOrders from "./Components/VENDOR/VendorOrders/VendorOrders";
 
 function LayoutWrapper() {
   const location = useLocation();
@@ -32,10 +30,10 @@ function LayoutWrapper() {
         <Route path="/" element={<Shop />} />
         <Route path="/admin-onion-dashboard" element={<AdminDashboard />} />
         <Route path="/collection" element={<Collections />} />
-        <Route path="/wedding" element={<ShopCategory category="wedding" />} />
+        <Route path="/wedding" element={<ShopCategory category="Wedding" />} />
         <Route
           path="/birthday"
-          element={<ShopCategory category="birthday" />}
+          element={<ShopCategory category="Birthday" />}
         />
         <Route path="/ceremony" element={<ShopCategory category="kid" />} />
         <Route path="/product" element={<Product />}>
@@ -55,6 +53,10 @@ function LayoutWrapper() {
         <Route
           path="/admin-onion-dashboard/add-product"
           element={<AddVendorProduct />}
+        />
+        <Route
+          path="/admin-onion-dashboard/orders"
+          element={<VendorOrders />}
         />
       </Routes>
       {!isAdminRoute && <Footer />}

@@ -6,12 +6,15 @@ const Items = (props) => {
       <div className="items">
         <Link to={`/product/${props.id}`}>
           {" "}
-          <img src={props.image} onClick={ () => window.scrollTo(0,0) } alt="product image" />{" "}
+          <img
+            src={props.image}
+            onClick={() => window.scrollTo(0, 0)}
+            alt={props.name}
+          />{" "}
         </Link>
         <p>{props.name}</p>
         <div className="items-prices">
-          <div className="new-price">${props.new_price}</div>
-          <div className="old-price">${props.old_price}</div>
+          <div className="new-price">Ghc{props.price}</div>
         </div>
       </div>
     </div>
