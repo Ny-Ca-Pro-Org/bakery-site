@@ -37,7 +37,7 @@ const VendorProduct = () => {
       setLoading(true);
 
       const response = await fetch(
-        `https://nyca-pro-enterprise.onrender.com/products/68287dd5cfae7e515f5d3737/${id}`,
+        `https://nyca-pro-enterprise.onrender.com/products/6828f0f468588da4da9d576c${id}`,
         {
           method: "DELETE",
           headers: {
@@ -50,7 +50,6 @@ const VendorProduct = () => {
       if (!response.ok) {
         throw new Error("Failed to delete product");
       }
-
       // ✅ Update local product list after deletion
       const updatedProducts = allProduct.filter((product) => product.id !== id);
       setAllProduct(updatedProducts);

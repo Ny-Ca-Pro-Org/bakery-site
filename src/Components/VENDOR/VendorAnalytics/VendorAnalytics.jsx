@@ -32,7 +32,7 @@ const data = [
 
 export default function VendorAnalytics() {
   return (
-    <div className="dash-container">
+    <div className="main-analytic-container">
       <aside className="sidebar">
         <h2 className="logo">NyCa-Pro Bakery</h2>
         <nav className="nav-links">

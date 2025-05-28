@@ -1,6 +1,10 @@
+.main-analytic-container{
+  width: 80%;
+  float: right;
+}
 .analytics-container {
   width: 100%;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .analytics-container h2 {

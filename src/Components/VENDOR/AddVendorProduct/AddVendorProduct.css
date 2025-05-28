@@ -1,16 +1,27 @@
 .add-product-container {
-  max-width: 500px;
-  margin: 30px auto;
+  width: 80%;
+  float: right;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
   background: #f9f9f9;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
+.add-product-container h2{
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
 .add-product-form {
+  max-width: 500px;
   display: flex;
   flex-direction: column;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 1rem;
 }
 
 .add-product-form label {

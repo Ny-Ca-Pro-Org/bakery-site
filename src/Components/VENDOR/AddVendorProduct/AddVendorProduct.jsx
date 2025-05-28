@@ -75,7 +75,7 @@ const AddVendorProduct = () => {
         <label>
           Category:
           <select name="category" required>
-            <option value="Weddings">Wedding</option>
+            <option value="Wedding">Wedding</option>
             <option value="Birthday">Birthday</option>
           </select>
         </label>
@@ -97,4 +97,3 @@ const AddVendorProduct = () => {
 };
 
 export default AddVendorProduct;
-
