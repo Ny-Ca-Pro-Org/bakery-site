@@ -26,8 +26,7 @@ const VendorProduct = () => {
 
     try {
       const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MmRhZjcwMzY5M2ViZWRiZWI1NzkwMSIsImlhdCI6MTc0NzkxMDMzNiwiZXhwIjoxNzQ3OTk2NzM2fQ.Fzs_hIU2vGHODoIU2vUTN3TNn9A_o-96UkA4obDL4qM";
-      // ✅ Correct token retrieval
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MmRhZjcwMzY5M2ViZWRiZWI1NzkwMSIsImlhdCI6MTc0ODU0NjAyMiwiZXhwIjoxNzQ4NjMyNDIyfQ.C8WJL5oacn8p3jVEBohbVZ5CR-crGSkjlp2g_UFStkc";
 
       if (!token) {
         alert("You are not logged in. Please log in to delete a product.");
@@ -37,11 +36,11 @@ const VendorProduct = () => {
       setLoading(true);
 
       const response = await fetch(
-        `https://nyca-pro-enterprise.onrender.com/products/6828f0f468588da4da9d576c${id}`,
+        `https://nyca-pro-enterprise.onrender.com/products/${id}`,
         {
           method: "DELETE",
           headers: {
-            Authorization: `Bearer ${token}`, // ✅ Proper header
+            Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
         }
@@ -50,7 +49,7 @@ const VendorProduct = () => {
       if (!response.ok) {
         throw new Error("Failed to delete product");
       }
-      // ✅ Update local product list after deletion
+
       const updatedProducts = allProduct.filter((product) => product.id !== id);
       setAllProduct(updatedProducts);
 
@@ -62,6 +61,50 @@ const VendorProduct = () => {
       setLoading(false);
     }
   };
+
+  // const handleDelete = async (id) => {
+  //   const confirmed = window.confirm(
+  //     "Are you sure you want to delete this product?"
+  //   );
+  //   if (!confirmed) return;
+
+  //   try {
+  //     const token =
+  //       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MmRhZjcwMzY5M2ViZWRiZWI1NzkwMSIsImlhdCI6MTc0ODQyODM2MSwiZXhwIjoxNzQ4NTE0NzYxfQ.cuOJDZtcXVE9YD90wdmAIs0RBdxvoraaKIgDlELyd7U"; // ✅ Correct token retrieval
+
+  //     if (!token) {
+  //       alert("You are not logged in. Please log in to delete a product.");
+  //       return;
+  //     }
+
+  //     setLoading(true);
+
+  //     const response = await fetch(
+  //       `https://nyca-pro-enterprise.onrender.com/products/6828f0f468588da4da9d576c${id}`,
+  //       {
+  //         method: "DELETE",
+  //         headers: {
+  //           Authorization: `Bearer ${token}`, // ✅ Proper header
+  //           "Content-Type": "application/json",
+  //         },
+  //       }
+  //     );
+
+  //     if (!response.ok) {
+  //       throw new Error("Failed to delete product");
+  //     }
+  //     // ✅ Update local product list after deletion
+  //     const updatedProducts = allProduct.filter((product) => product.id !== id);
+  //     setAllProduct(updatedProducts);
+
+  //     alert("Product deleted successfully!");
+  //   } catch (error) {
+  //     console.error("Error deleting product:", error);
+  //     alert("Something went wrong while deleting the product.");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   return (
     <div className="product-page">
@@ -121,12 +164,11 @@ const VendorProduct = () => {
           </div>
         ))}
       </div>
-      // the edit form logic
       {editingProduct && (
         <EditProductForm
           product={editingProduct}
           token={
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MmRhZjcwMzY5M2ViZWRiZWI1NzkwMSIsImlhdCI6MTc0NzkxMDMzNiwiZXhwIjoxNzQ3OTk2NzM2fQ.Fzs_hIU2vGHODoIU2vUTN3TNn9A_o-96UkA4obDL4qM"
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MmRhZjcwMzY5M2ViZWRiZWI1NzkwMSIsImlhdCI6MTc0ODU0NjAyMiwiZXhwIjoxNzQ4NjMyNDIyfQ.C8WJL5oacn8p3jVEBohbVZ5CR-crGSkjlp2g_UFStkc"
           } // TODO: Replace with real token logic
           onCancel={() => setEditingProduct(null)}
           onSave={(updatedProduct) => {

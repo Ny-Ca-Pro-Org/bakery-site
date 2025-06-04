@@ -4,13 +4,13 @@ import { ShopContext } from "../../Context/ShopContext";
 import remove_icon from "../../Assets/cart_cross_icon.png";
 
 const CartItem = () => {
-  const { getTotalCartAmount, all_product, cartItems, removeFromCart } =
+  const { getTotalCartAmount, allProduct, cartItems, removeFromCart } =
     useContext(ShopContext);
 
   const vendorNumber = "233269914370"; // Replace with actual vendor's number
 
   const sendOrderToWhatsApp = () => {
-    const orderedItems = all_product.filter((item) => cartItems[item.id] > 0);
+    const orderedItems = allProduct.filter((item) => cartItems[item.id] > 0);
     if (orderedItems.length === 0) return alert("Your cart is empty.");
 
     const messageLines = orderedItems.map((item, index) => {
@@ -43,7 +43,7 @@ const CartItem = () => {
         <p>Remove</p>
       </div>
       <hr />
-      {all_product.map((e) => {
+      {allProduct.map((e) => {
         if (cartItems[e.id] > 0) {
           return (
             <div key={e.id}>
@@ -54,9 +54,9 @@ const CartItem = () => {
                   className="carticon-producticon"
                 />
                 <p>{e.name}</p>
-                <p>${e.new_price}</p>
+                <p>${e.price}</p>
                 <button className="cart-quantity">{cartItems[e.id]}</button>
-                <p>${e.new_price * cartItems[e.id]}</p>
+                <p>${e.price * cartItems[e.id]}</p>
                 <img
                   className="removeicon"
                   src={remove_icon}
@@ -81,10 +81,10 @@ const CartItem = () => {
               <p>${getTotalCartAmount()}</p>
             </div>
             <hr />
-            <div className="items-total">
+            {/* <div className="items-total">
               <p>Shipping Fee</p>
               <p>Free</p>
-            </div>
+            </div> */}
             <hr />
             <div className="items-total">
               <h3>Total</h3>
@@ -93,7 +93,6 @@ const CartItem = () => {
           </div>
           <button onClick={sendOrderToWhatsApp}>Proceed to checkout</button>
         </div>
-        
       </div>
     </div>
   );

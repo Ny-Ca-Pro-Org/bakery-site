@@ -21,7 +21,7 @@ const AddVendorProduct = () => {
         {
           headers: {
             "Content-Type": "multipart/form-data",
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MmRhZjcwMzY5M2ViZWRiZWI1NzkwMSIsImlhdCI6MTc0NzkxMDMzNiwiZXhwIjoxNzQ3OTk2NzM2fQ.Fzs_hIU2vGHODoIU2vUTN3TNn9A_o-96UkA4obDL4qM`,
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MmRhZjcwMzY5M2ViZWRiZWI1NzkwMSIsImlhdCI6MTc0ODU0NjAyMiwiZXhwIjoxNzQ4NjMyNDIyfQ.C8WJL5oacn8p3jVEBohbVZ5CR-crGSkjlp2g_UFStkc`,
           },
         }
       );

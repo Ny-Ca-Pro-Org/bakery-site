@@ -15,8 +15,10 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <div className="nav-logo">
-        <img src={logo} alt="logo" />
-        <p>NyCa-Pro Bakery</p>
+        <Link to="/">
+          <img src={logo} alt="logo" />
+        </Link>
+        <p>NyCa Bakery</p>
       </div>
 
       {/* Hamburger icon */}

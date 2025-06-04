@@ -4,23 +4,32 @@ import axios from "axios";
 
 const Orders = () => {
   const [formElement, setFormElement] = useState({
-    fullname: "",
-    email: "",
-    phone: "",
-    description: "",
+    Name: "",
+    Location: "",
+    Phone: "",
+    OrderDescription: "",
   });
+
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
+    setLoading(true);
+
+    const formData = {
+      Name: formElement.Name,
+      Location: formElement.Location,
+      Phone: formElement.Phone,
+      OrderDescription: [formElement.OrderDescription],
+    };
+
     try {
       const response = await axios.post(
         "https://nyca-pro-enterprise.onrender.com/orders",
         formData,
         {
           headers: {
-            "Content-Type": "multipart/form-data",
-            //   Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MmRhZjcwMzY5M2ViZWRiZWI1NzkwMSIsImlhdCI6MTc0NzkxMDMzNiwiZXhwIjoxNzQ3OTk2NzM2fQ.Fzs_hIU2vGHODoIU2vUTN3TNn9A_o-96UkA4obDL4qM`,
+            "Content-Type": "application/json",
           },
         }
       );
@@ -28,15 +37,18 @@ const Orders = () => {
       alert("Product submitted successfully!");
       console.log("Response:", response.data);
 
+      // ✅ Reset inputs after success
       setFormElement({
-        fullname: "",
-        email: "",
-        phone: "",
-        description: "",
+        Name: "",
+        Location: "",
+        Phone: "",
+        OrderDescription: "",
       });
     } catch (error) {
       console.error("Error submitting product:", error);
       alert("Failed to submit product.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -44,12 +56,10 @@ const Orders = () => {
     <div className="order">
       <div className="order-left">
         <div className="order-text-container">
-          <div className="inner-container">
             <h1>just tell us what you want</h1>
             <p>
               Your Order <br /> <span>.....</span> Our Priority
             </p>
-          </div>
         </div>
       </div>
       <div className="order-right">
@@ -58,26 +68,62 @@ const Orders = () => {
         <div className="order-form-container">
           <form onSubmit={handleSubmit} className="order-form">
             <label>
-              Full Name:
-              <input type="text" name="customersName" required />
+              Name:
+              <input
+                type="text"
+                name="Name"
+                value={formElement.Name}
+                onChange={(e) =>
+                  setFormElement({ ...formElement, Name: e.target.value })
+                }
+                required
+              />
             </label>
 
             <label>
               Location:
-              <input type="text" name="email" required />
+              <input
+                type="text"
+                name="Location"
+                value={formElement.Location}
+                onChange={(e) =>
+                  setFormElement({ ...formElement, Location: e.target.value })
+                }
+                required
+              />
             </label>
 
             <label>
               Phone Number:
-              <input type="tel" name="customersPhone" required />
+              <input
+                type="tel"
+                name="Phone"
+                value={formElement.Phone}
+                onChange={(e) =>
+                  setFormElement({ ...formElement, Phone: e.target.value })
+                }
+                required
+              />
             </label>
 
             <label>
               Order Description:
-              <textarea name="OrderDescription" required />
+              <textarea
+                name="OrderDescription"
+                value={formElement.OrderDescription}
+                onChange={(e) =>
+                  setFormElement({
+                    ...formElement,
+                    OrderDescription: e.target.value,
+                  })
+                }
+                required
+              />
             </label>
 
-            <button type="submit">Submit Order</button>
+            <button type="submit" disabled={loading}>
+              {loading ? <div className="spinner"></div> : "Submit Order"}
+            </button>
           </form>
         </div>
       </div>

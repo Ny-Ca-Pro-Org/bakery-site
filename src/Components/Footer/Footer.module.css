@@ -21,7 +21,7 @@
   gap: 20px;
 }
 .footerLogo img {
-  width: 50px;
+  width: 100px;
 }
 .footerLogo p {
   color: #383838;
@@ -30,7 +30,8 @@
 }
 .footerLinks {
   display: flex;
-  gap: 50px;
+  gap: 10px;
+  flex-direction: column;
   font-size: 1rem;
 }
 .footerLinks a {
@@ -44,21 +45,25 @@
 
 .footerIcons {
   display: flex;
+  flex-direction: column;
   gap: 20px;
 }
 .footerIconscontainer {
-  padding: 10px;
-  padding-bottom: 6px;
-  background-color: transparent;
-  border: 1px solid #ebebeb;
-  border-radius: 50%;
-  cursor: pointer;
+ padding: .1rem;
 }
-.footerIconscontainer:hover{
-  background-color: rgb(147, 147, 253);
+.footerIconscontainer a{
+   display: flex;
+ align-items: center;
+ gap: 10px;
 }
 .footerIconscontainer img {
-  width: 25px;
+  width: 30px;
+  cursor: pointer;
+
+}
+.footerIconscontainer span{
+  font-size: 1.1rem;
+  font-weight: 400;
 }
 .copyright {
   display: flex;
@@ -80,4 +85,23 @@
 }
 .copyright p{
   font-size: 1rem;
+}
+
+@media(max-width: 500px){
+  .footer{
+    padding: 0;
+  }
+  .miniContainer{
+    padding: 0.5rem;
+  }
+  .footerLogo {
+    flex-direction: column;
+  }
+  .footerLogo img{
+    width: 30px;
+  }
+  .footerLogo p{
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import "./VendorDashboard.css";
 import { Link } from "react-router";
+import logo from "../../../assets/logo-big.png"
 import {
   FaTshirt,
   FaPlus,
@@ -22,7 +23,10 @@ const VendorDashboard = () => {
   return (
     <div className="dashboard-container ">
       <aside className="sidebar">
-        <h2 className="logo">NyCa-Pro Bakery</h2>
+        <Link to="/">
+        <img className="logo" src={logo} alt="logo" />
+        </Link>
+        {/* <h2 className="logo">NyCa-Pro Bakery</h2> */}
         <nav className="nav-links">
           <Link to="/admin-onion-dashboard">
             <FaShoppingCart /> <span>Overview</span>

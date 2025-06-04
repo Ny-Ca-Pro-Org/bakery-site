@@ -10,7 +10,6 @@ const EditProductForm = ({ product, onCancel, onSave, token }) => {
   });
 
   const [loading, setLoading] = useState(false);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -19,7 +18,7 @@ const EditProductForm = ({ product, onCancel, onSave, token }) => {
       const response = await fetch(
         `https://nyca-pro-enterprise.onrender.com/products/${product.id}`,
         {
-          method: "PUT",
+          method: "PATCH",
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
@@ -64,7 +63,7 @@ const EditProductForm = ({ product, onCancel, onSave, token }) => {
         placeholder="Price"
       />
       <input
-        type="text"
+        type="file"
         value={formData.image}
         onChange={(e) => setFormData({ ...formData, image: e.target.value })}
         placeholder="Image URL"
