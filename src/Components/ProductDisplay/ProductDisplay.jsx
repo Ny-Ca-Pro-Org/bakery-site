@@ -9,12 +9,6 @@ const ProductDisplay = ({ product }) => {
   return (
     <div className="product-display">
       <div className="product-display-left">
-        <div className="image-list">
-          <img src={product.image} alt="product image" />
-          <img src={product.image} alt="product image" />
-          <img src={product.image} alt="product image" />
-          <img src={product.image} alt="product image" />
-        </div>
         <div className="display-image">
           <img className="main-image" src={product.image} alt="product image" />
         </div>
@@ -29,7 +23,7 @@ const ProductDisplay = ({ product }) => {
           <img src={star_dull_icon} alt="stars" />
         </div>
         <div className="right-prices">
-          <div className="new-price">GHC {product.price}</div>
+          <p className="new-price">GHC {product.price}</p>
         </div>
         <div className="right-description">
           <p>{product.description}</p>

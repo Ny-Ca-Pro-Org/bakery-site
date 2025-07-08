@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
+import { apiGetAllProducts } from "../services/products";
 
 export const ShopContext = createContext(null);
 
@@ -18,9 +19,7 @@ const ShopContextProvider = (props) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(
-          "https://nyca-pro-enterprise.onrender.com/products/allproducts"
-        );
+        const response = await apiGetAllProducts();
         const products = response.data;
         setAllProduct(products);
         setCartItem(getDefaultCart(products));

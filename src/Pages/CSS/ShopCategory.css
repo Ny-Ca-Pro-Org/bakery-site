@@ -1,6 +1,6 @@
 .category{
     margin: auto;
-    width: 85%;
+    width: 90%;
 }
 .shop-banner {
   display: block;
@@ -22,9 +22,10 @@
   border: 1px solid #888;
 }
 .shopcategory-product {
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  row-gap: 40px;
+  gap: 1rem;
 }
 .load-more-btn {
   display: flex;
@@ -39,4 +40,19 @@
   font-weight: 500;
   cursor: pointer;
   padding: .5rem;
+}
+
+@media(max-width: 800px){
+  .shopcategory-product{
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media(max-width: 500px){
+  .shopcategory-product{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
 }

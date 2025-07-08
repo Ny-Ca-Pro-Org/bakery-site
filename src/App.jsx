@@ -16,8 +16,8 @@ import AdminDashboard from "./Pages/AdminDashboard";
 import VendorAnalytics from "./Components/VENDOR/VendorAnalytics/VendorAnalytics";
 import VendorProduct from "./Components/VENDOR/VendorProducts/VendorProduct";
 import AddVendorProduct from "./Components/VENDOR/AddVendorProduct/AddVendorProduct";
-import Collections from "./Components/Collections/Collections";
 import VendorOrders from "./Components/VENDOR/VendorOrders/VendorOrders";
+import Pasteries from "./Pages/Pasteries";
 
 function LayoutWrapper() {
   const location = useLocation();
@@ -29,7 +29,6 @@ function LayoutWrapper() {
       <Routes>
         <Route path="/" element={<Shop />} />
         <Route path="/admin-onion-dashboard" element={<AdminDashboard />} />
-        <Route path="/collection" element={<Collections />} />
         <Route path="/wedding" element={<ShopCategory category="Wedding" />} />
         <Route
           path="/birthday"
@@ -42,6 +41,7 @@ function LayoutWrapper() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Auth />} />
+        <Route path="pasteries" element={<Pasteries />} />
         <Route
           path="/admin-onion-dashboard/analytics"
           element={<VendorAnalytics />}

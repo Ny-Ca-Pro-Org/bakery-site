@@ -11,16 +11,19 @@ import {
   FaDollarSign,
   FaChartLine,
 } from "react-icons/fa";
-import axios from "axios";
+import SideBar from "../SideBar/SideBar";
+import {
+  apiDeleteVendorOrderbyId,
+  apiGetAllOrders,
+} from "../../../services/products";
+//import { apiGetAllOrders, apiDeleteVendorOrderbyId } from "../../../services/orders";
 
 const VendorOrders = () => {
   const [orders, setOrders] = useState([]);
 
   const fetchOrders = async () => {
     try {
-      const res = await axios.get(
-        "https://nyca-pro-enterprise.onrender.com/orders/allorders"
-      );
+      const res = await apiGetAllOrders();
       setOrders(res.data);
       console.log(res.data);
     } catch (error) {
@@ -30,9 +33,7 @@ const VendorOrders = () => {
 
   const deleteOrder = async (orderId) => {
     try {
-      await axios.delete(
-        `https://nyca-pro-enterprise.onrender.com/orders/${orderId}`
-      );
+      await apiDeleteVendorOrderbyId(orderId);
       setOrders((prevOrders) =>
         prevOrders.filter((order) => order._id !== orderId)
       );
@@ -42,57 +43,13 @@ const VendorOrders = () => {
     }
   };
 
-  // const deleteOrder = async (orderId) => {
-  //   try {
-  //     await axios.delete(
-  //       `https://nyca-pro-enterprise.onrender.com/orders/683319a97430597ac1f268aa/${orderId}`
-  //     );
-  //     // Remove order from state
-  //     setOrders((prevOrders) =>
-  //       prevOrders.filter((order) => order._id !== orderId)
-  //     );
-  //     console.log(`Order ${orderId} deleted successfully`);
-  //   } catch (error) {
-  //     console.error("Failed to delete order", error);
-  //   }
-  // };
-
   useEffect(() => {
     fetchOrders();
   }, []);
 
   return (
     <div className="vendor-orders">
-      <aside className="sidebar">
-        <h2 className="logo">NyCa-Pro Bakery</h2>
-        <nav className="nav-links">
-          <Link to="/admin-onion-dashboard">
-            <FaShoppingCart /> <span>Overview</span>
-          </Link>
-          <Link to="/admin-onion-dashboard/product">
-            <FaTshirt /> <span>My Products</span>
-          </Link>
-          <Link to="/admin-onion-dashboard/add-product">
-            <FaPlus /> <span>Add Product</span>
-          </Link>
-          <Link to="/admin-onion-dashboard/orders">
-            <FaPlus /> <span>Orders </span>
-          </Link>
-          <Link to="/admin-onion-dashboard/analytics">
-            <FaChartBar /> <span>Analytics</span>
-          </Link>
-
-          <a href="/logout">
-            <FaSignOutAlt /> <span>Logout</span>
-          </a>
-        </nav>
-        <div className="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </aside>
+      <SideBar />
 
       <div className="orders-container">
         <div className="order-container">

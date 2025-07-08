@@ -1,23 +1,20 @@
-.items-container {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  /* box-shadow: 1px 1px 2px black; */
-}
+
 .items {
   width: 100%;
   transition: 0.3s ease-in-out;
+  background-color: rgba(163, 203, 252, 0.658);
+  border-radius: 7px;
 }
 .items img {
   width: 100%;
+  max-height: 300px;
 }
-/* .items:hover {
-  transform: scale(1.05);
-} */
+
 .items p {
   margin: 6px 0;
+  font-size: 1.2rem;
+  font-weight: 900;
+  text-align: center;
 }
 .items-prices {
   display: flex;
@@ -25,8 +22,11 @@
 }
 .new-price {
   color: #374151;
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 1.2rem;
+  font-weight: 900;
+  text-align: center;
+  width: 100%;
+
 }
 .old-price {
   color: #8c8c8c;

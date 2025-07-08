@@ -1,5 +1,5 @@
 import style from "./Footer.module.css";
-import footerLogo from "../../assets/logo-big.png";
+import footerLogo from "../../assets/logo.png";
 import instagram from "../../assets/instagram_icon.png";
 import pintrest from "../../assets/pinterest_icon.png";
 import whatsapp from "../../assets/whatsapp_icon.png";
@@ -23,19 +23,19 @@ const Footer = () => {
         </ul>
         <div className={style.footerIcons}>
           <div className={style.footerIconscontainer}>
-            <a href="#">
+            <a href="https://www.instagram.com/nyca_bakery?igsh=NzdqdXgzc3gyNGV3">
               <img src={instagram} alt="logo" />
               <span>instagram</span>
             </a>
           </div>
           <div className={style.footerIconscontainer}>
-            <a href="#">
+            <a href="https://www.instagram.com/nyca_bakery?igsh=NzdqdXgzc3gyNGV3">
               <img src={pintrest} alt="logo" />
               <span>pinterest</span>
             </a>
           </div>
           <div className={style.footerIconscontainer}>
-            <a href="#">
+            <a href="https://www.instagram.com/nyca_bakery?igsh=NzdqdXgzc3gyNGV3">
               <img src={whatsapp} alt="logo" />
               <span>whatsapp</span>
             </a>

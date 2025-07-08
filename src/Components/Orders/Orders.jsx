@@ -1,6 +1,7 @@
 import "./Orders.css";
 import React, { useState } from "react";
 import axios from "axios";
+import { apiCreateOrder } from "../../services/products";
 
 const Orders = () => {
   const [formElement, setFormElement] = useState({
@@ -24,15 +25,7 @@ const Orders = () => {
     };
 
     try {
-      const response = await axios.post(
-        "https://nyca-pro-enterprise.onrender.com/orders",
-        formData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await apiCreateOrder(formData);
 
       alert("Product submitted successfully!");
       console.log("Response:", response.data);
@@ -56,10 +49,10 @@ const Orders = () => {
     <div className="order">
       <div className="order-left">
         <div className="order-text-container">
-            <h1>just tell us what you want</h1>
-            <p>
-              Your Order <br /> <span>.....</span> Our Priority
-            </p>
+          <h1>just tell us what you want</h1>
+          <p>
+            Your Order <br /> <span>.....</span> Our Priority
+          </p>
         </div>
       </div>
       <div className="order-right">

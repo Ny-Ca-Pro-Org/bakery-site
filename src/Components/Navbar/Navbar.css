@@ -16,7 +16,7 @@
   align-items: center;
 }
 .nav-logo img {
-  width: 70px;
+  width: 80px;
   margin-right: 0.5rem;
   cursor: pointer;
 }
@@ -26,6 +26,7 @@
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   color: black;
   text-transform: capitalize;
+  display: none;
 }
 .nav-list {
   min-width: 30%;

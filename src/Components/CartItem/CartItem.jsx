@@ -7,7 +7,7 @@ const CartItem = () => {
   const { getTotalCartAmount, allProduct, cartItems, removeFromCart } =
     useContext(ShopContext);
 
-  const vendorNumber = "233269914370"; // Replace with actual vendor's number
+  const vendorNumber = "233269914370"; 
 
   const sendOrderToWhatsApp = () => {
     const orderedItems = allProduct.filter((item) => cartItems[item.id] > 0);
@@ -81,10 +81,7 @@ const CartItem = () => {
               <p>${getTotalCartAmount()}</p>
             </div>
             <hr />
-            {/* <div className="items-total">
-              <p>Shipping Fee</p>
-              <p>Free</p>
-            </div> */}
+           
             <hr />
             <div className="items-total">
               <h3>Total</h3>

@@ -12,6 +12,8 @@ import {
 } from "react-icons/fa";
 import { ShopContext } from "../../../Context/ShopContext";
 import EditProductForm from "../EditForm/EditForm";
+import SideBar from "../SideBar/SideBar";
+import { apiDeleteVendorProductbyId } from "../../../services/products";
 
 const VendorProduct = () => {
   const { allProduct, setAllProduct } = useContext(ShopContext);
@@ -25,8 +27,12 @@ const VendorProduct = () => {
     if (!confirmed) return;
 
     try {
-      const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MmRhZjcwMzY5M2ViZWRiZWI1NzkwMSIsImlhdCI6MTc0ODU0NjAyMiwiZXhwIjoxNzQ4NjMyNDIyfQ.C8WJL5oacn8p3jVEBohbVZ5CR-crGSkjlp2g_UFStkc";
+      //const token = localStorage.getItem("token");
+
+      const token = localStorage.getItem("token");
+      if (!token) {
+        alert("Token is missing! Please log in.");
+      }
 
       if (!token) {
         alert("You are not logged in. Please log in to delete a product.");
@@ -35,21 +41,14 @@ const VendorProduct = () => {
 
       setLoading(true);
 
-      const response = await fetch(
-        `https://nyca-pro-enterprise.onrender.com/products/${id}`,
-        {
-          method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      await apiDeleteVendorProductbyId(id, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
 
-      if (!response.ok) {
-        throw new Error("Failed to delete product");
-      }
-
+      // Remove product from local state
       const updatedProducts = allProduct.filter((product) => product.id !== id);
       setAllProduct(updatedProducts);
 
@@ -62,81 +61,9 @@ const VendorProduct = () => {
     }
   };
 
-  // const handleDelete = async (id) => {
-  //   const confirmed = window.confirm(
-  //     "Are you sure you want to delete this product?"
-  //   );
-  //   if (!confirmed) return;
-
-  //   try {
-  //     const token =
-  //       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MmRhZjcwMzY5M2ViZWRiZWI1NzkwMSIsImlhdCI6MTc0ODQyODM2MSwiZXhwIjoxNzQ4NTE0NzYxfQ.cuOJDZtcXVE9YD90wdmAIs0RBdxvoraaKIgDlELyd7U"; // ✅ Correct token retrieval
-
-  //     if (!token) {
-  //       alert("You are not logged in. Please log in to delete a product.");
-  //       return;
-  //     }
-
-  //     setLoading(true);
-
-  //     const response = await fetch(
-  //       `https://nyca-pro-enterprise.onrender.com/products/6828f0f468588da4da9d576c${id}`,
-  //       {
-  //         method: "DELETE",
-  //         headers: {
-  //           Authorization: `Bearer ${token}`, // ✅ Proper header
-  //           "Content-Type": "application/json",
-  //         },
-  //       }
-  //     );
-
-  //     if (!response.ok) {
-  //       throw new Error("Failed to delete product");
-  //     }
-  //     // ✅ Update local product list after deletion
-  //     const updatedProducts = allProduct.filter((product) => product.id !== id);
-  //     setAllProduct(updatedProducts);
-
-  //     alert("Product deleted successfully!");
-  //   } catch (error) {
-  //     console.error("Error deleting product:", error);
-  //     alert("Something went wrong while deleting the product.");
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
   return (
     <div className="product-page">
-      <aside className="sidebar">
-        <h2 className="logo">NyCa-Pro Bakery</h2>
-        <nav className="nav-links">
-          <Link to="/admin-onion-dashboard">
-            <FaShoppingCart /> <span>Overview</span>
-          </Link>
-          <Link to="/admin-onion-dashboard/product">
-            <FaTshirt /> <span>My Products</span>
-          </Link>
-          <Link to="/admin-onion-dashboard/add-product">
-            <FaPlus /> <span>Add Product</span>
-          </Link>
-          <Link to="/admin-onion-dashboard/orders">
-            <FaPlus /> <span>Orders </span>
-          </Link>
-          <Link to="/admin-onion-dashboard/analytics">
-            <FaChartBar /> <span>Analytics</span>
-          </Link>
-          <a href="/logout">
-            <FaSignOutAlt /> <span>Logout</span>
-          </a>
-        </nav>
-        <div className="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </aside>
+      <SideBar />
       <h1>My Products</h1>
       <div className="product-grid">
         {allProduct.map((product) => (
@@ -167,9 +94,7 @@ const VendorProduct = () => {
       {editingProduct && (
         <EditProductForm
           product={editingProduct}
-          token={
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MmRhZjcwMzY5M2ViZWRiZWI1NzkwMSIsImlhdCI6MTc0ODU0NjAyMiwiZXhwIjoxNzQ4NjMyNDIyfQ.C8WJL5oacn8p3jVEBohbVZ5CR-crGSkjlp2g_UFStkc"
-          } // TODO: Replace with real token logic
+          token={localStorage.getItem("token")} // ✅ Real token
           onCancel={() => setEditingProduct(null)}
           onSave={(updatedProduct) => {
             const updatedList = allProduct.map((p) =>

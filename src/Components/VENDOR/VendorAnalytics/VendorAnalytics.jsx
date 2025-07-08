@@ -21,6 +21,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import "./VendorAnalytics.css"; // Import your CSS file
+import SideBar from "../SideBar/SideBar";
 
 const data = [
   { name: "Jan", sales: 4000 },
@@ -33,36 +34,7 @@ const data = [
 export default function VendorAnalytics() {
   return (
     <div className="main-analytic-container">
-      <aside className="sidebar">
-        <h2 className="logo">NyCa-Pro Bakery</h2>
-        <nav className="nav-links">
-          <Link to="/admin-onion-dashboard">
-            <FaShoppingCart /> <span>Overview</span>
-          </Link>
-          <Link to="/admin-onion-dashboard/product">
-            <FaTshirt /> <span>My Products</span>
-          </Link>
-          <Link to="/admin-onion-dashboard/add-product">
-            <FaPlus /> <span>Add Product</span>
-          </Link>
-          <Link to="/admin-onion-dashboard/orders">
-            <FaPlus /> <span>Orders </span>
-          </Link>
-          <Link to="/admin-onion-dashboard/analytics">
-            <FaChartBar /> <span>Analytics</span>
-          </Link>
-
-          <a href="/logout">
-            <FaSignOutAlt /> <span>Logout</span>
-          </a>
-        </nav>
-        <div className="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </aside>
+      <SideBar />
       <h2 className="dashboard-title">Sales Overview</h2>
       <div className="chart-container">
         <ResponsiveContainer width="100%" height={300} className="dosomething">

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./AddVendorProduct.css";
 import { Link } from "react-router";
-import axios from "axios";
 import {
   FaTshirt,
   FaPlus,
@@ -9,58 +8,35 @@ import {
   FaSignOutAlt,
   FaShoppingCart,
 } from "react-icons/fa";
+import SideBar from "../SideBar/SideBar";
+import { apiAddProduct } from "../../../services/products";
 
 const AddVendorProduct = () => {
+  const [loading, setLoading] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    try {
-      const response = await axios.post(
-        "https://nyca-pro-enterprise.onrender.com/products",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MmRhZjcwMzY5M2ViZWRiZWI1NzkwMSIsImlhdCI6MTc0ODU0NjAyMiwiZXhwIjoxNzQ4NjMyNDIyfQ.C8WJL5oacn8p3jVEBohbVZ5CR-crGSkjlp2g_UFStkc`,
-          },
-        }
-      );
+    setLoading(true);
 
+    try {
+      const response = await apiAddProduct(formData);
       alert("Product submitted successfully!");
       console.log("Response:", response.data);
+      e.target.reset(); // Optional: Reset form fields
     } catch (error) {
       console.error("Error submitting product:", error);
       alert("Failed to submit product.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="add-product-container">
-      <aside className="sidebar">
-        <h2 className="logo">NyCa-Pro Bakery</h2>
-        <nav className="nav-links">
-          <Link to="/admin-onion-dashboard">
-            <FaShoppingCart /> <span>Overview</span>
-          </Link>
-          <Link to="/admin-onion-dashboard/product">
-            <FaTshirt /> <span>My Products</span>
-          </Link>
-          <Link to="/admin-onion-dashboard/add-product">
-            <FaPlus /> <span>Add Product</span>
-          </Link>
-          <Link to="/admin-onion-dashboard/orders">
-            <FaPlus /> <span>Orders</span>
-          </Link>
-          <Link to="/admin-onion-dashboard/analytics">
-            <FaChartBar /> <span>Analytics</span>
-          </Link>
-          <a href="/logout">
-            <FaSignOutAlt /> <span>Logout</span>
-          </a>
-        </nav>
-      </aside>
-
+      <SideBar />
       <h2>Add New Product</h2>
+
       <form onSubmit={handleSubmit} className="add-product-form">
         <label>
           Product Name:
@@ -90,7 +66,12 @@ const AddVendorProduct = () => {
           <textarea name="description" required></textarea>
         </label>
 
-        <button type="submit">Add Product</button>
+        <button type="submit" disabled={loading}>
+          {loading ? "Submitting..." : "Add Product"}
+        </button>
+
+        {/* Spinner */}
+        {loading && <div className="spinner"></div>}
       </form>
     </div>
   );
