@@ -1,0 +1,61 @@
+.vendor-orders {
+  width: 80%;
+  padding: 1rem;
+  float: right;
+  min-height: 100vh;
+  
+}
+.order-container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  padding: .5rem;
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+}
+.order-in {
+  border: 1px solid rgba(0, 0, 0, 0.055);
+  padding: 0.5rem;
+  border-radius: 0.8rem;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.144);
+  height: fit-content;
+}
+.order-in span {
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: gray;
+}
+.order-in h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.status {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.8rem;
+}
+.status input {
+  margin-right: 5px;
+}
+.status label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.del-btn {
+  background-color: aliceblue;
+  height: 25px;
+  width: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.del-btn:hover {
+  background-color: rgb(215, 237, 255);
+}

@@ -1,0 +1,120 @@
+.main-analytic-container{
+  width: 80%;
+  float: right;
+}
+.analytics-container {
+  width: 100%;
+  padding: 1rem;
+}
+
+.analytics-container h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #333;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  background-color: transparent;
+}
+
+.card {
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s;
+  background-color: black;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card .icon {
+  font-size: 2rem;
+  color: orange;
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  margin: 0;
+  color: white;
+}
+
+.card p {
+  color: #aed2fc;
+  margin: 0;
+}
+
+/* VendorDashboard.css */
+
+.dash-container {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  background-color: floralwhite;
+}
+
+.dashboard-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  text-transform: uppercase;
+  text-decoration: underline;
+  color: rgb(54, 52, 52);
+  text-align: center;
+}
+
+.chart-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  padding: 15px;
+  border-radius: 8px;
+  /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); */
+}
+
+@media (max-width: 800px) {
+  .dash-container {
+    flex-direction: column;
+    height: max-content;
+    padding: 0;
+  }
+  .chart-container {
+    height: max-content;
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .dash-container {
+    padding: 2rem 0;
+
+  }
+  .chart-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .analytics-container {
+    padding: 0.2rem;
+  }
+  .dosomething{
+    width: 100%;
+  }
+  .doanotherthing{
+    width: 100%;
+    margin-left: -1rem;
+  }
+}
