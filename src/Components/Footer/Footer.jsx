@@ -1,16 +1,9 @@
 import style from "./Footer.module.css";
-<<<<<<< HEAD
 import footerLogo from "../../assets/logo_big.png";
 import instagram from "../../assets/instagram_icon.png";
 import pintrest from "../../assets/pinterest_icon.png";
 import whatsapp from "../../assets/whatsapp_icon.png";
-=======
-import footerLogo from "../../assets/logo.png";
-import instagram from "../../assets/instagram_icon.png";
-import pintrest from "../../assets/pinterest_icon.png";
-import whatsapp from "../../assets/whatsapp_icon.png";
 import { Link } from "react-router";
->>>>>>> 9eafc029889ff7c4c1ba065f4effed90aac535dc
 
 const Footer = () => {
   return (
