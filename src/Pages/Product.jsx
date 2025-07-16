@@ -1,4 +1,4 @@
-import "./CSS/product.css";
+import "./CSS/Product.css";
 import { useContext } from "react";
 import { ShopContext } from "../Context/ShopContext";
 import { useParams } from "react-router";
