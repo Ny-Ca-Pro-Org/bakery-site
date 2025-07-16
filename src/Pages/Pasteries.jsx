@@ -1,11 +1,29 @@
-import React from "react";
-import ProductsCard from "../Components/ProductsCard/ProductsCard";
+import "./CSS/Pasteries.css";
+import { useContext } from "react";
+import "./CSS/ShopCategory.css";
+import { ShopContext } from "../Context/ShopContext";
+import dropDown from "../assets/dropdown_icon.png";
+import Items from "../Components/Items/Items";
 
 const Pasteries = () => {
+  const { allProduct } = useContext(ShopContext);
   return (
-    <div>
-      <h2>Pasteries@page.onion</h2>
-          </div>
+    <div className="pasteries">
+      <h2>Cakes Available In Different Flavours And Categories</h2>
+      <div className="pasteries-container">
+        {allProduct.map((product, index) => {
+          return (
+            <Items
+              key={index}
+              image={product.image}
+              name={product.name}
+              price={product.price}
+              id={product.id}
+            />
+          );
+        })}
+      </div>
+    </div>
   );
 };
 

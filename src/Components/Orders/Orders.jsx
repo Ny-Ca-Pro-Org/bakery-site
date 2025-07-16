@@ -1,94 +1,124 @@
 import "./Orders.css";
 import React, { useState } from "react";
+import axios from "axios";
+import { apiCreateOrder } from "../../services/products";
 
 const Orders = () => {
-  const [formData, setFormData] = useState({
-    fullname: "",
-    email: "",
-    phone: "",
-    description: "",
+  const [formElement, setFormElement] = useState({
+    Name: "",
+    Location: "",
+    Phone: "",
+    OrderDescription: "",
   });
 
-  const handleChange = (e) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Order Submitted:", formData);
-    alert("Order submitted successfully!");
-    // Reset form
-    setFormData({
-      fullname: "",
-      email: "",
-      phone: "",
-      description: "",
-    });
+    setLoading(true);
+
+    const formData = {
+      Name: formElement.Name,
+      Location: formElement.Location,
+      Phone: formElement.Phone,
+      OrderDescription: [formElement.OrderDescription],
+    };
+
+    try {
+      const response = await apiCreateOrder(formData);
+
+      alert("Product submitted successfully!");
+      console.log("Response:", response.data);
+
+      // ✅ Reset inputs after success
+      setFormElement({
+        Name: "",
+        Location: "",
+        Phone: "",
+        OrderDescription: "",
+      });
+    } catch (error) {
+      console.error("Error submitting product:", error);
+      alert("Failed to submit product.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="order">
       <div className="order-left">
         <div className="order-text-container">
-          <div className="inner-container">
-            <h1>just tell us what you want</h1>
-            <p>
-              Your Order <br /> <span>.....</span> Our Priority
-            </p>
-          </div>
+          <h1>just tell us what you want</h1>
+          <p>
+            Your Order <br /> <span>.....</span> Our Priority
+          </p>
         </div>
       </div>
-      <div className="order-form-container">
+      <div className="order-right">
         <h2>Place Your Order</h2>
-        <form onSubmit={handleSubmit} className="order-form">
-          <label>
-            Full Name:
-            <input
-              type="text"
-              name="fullname"
-              value={formData.fullname}
-              onChange={handleChange}
-              required
-            />
-          </label>
 
-          <label>
-            Email:
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </label>
+        <div className="order-form-container">
+          <form onSubmit={handleSubmit} className="order-form">
+            <label>
+              Name:
+              <input
+                type="text"
+                name="Name"
+                value={formElement.Name}
+                onChange={(e) =>
+                  setFormElement({ ...formElement, Name: e.target.value })
+                }
+                required
+              />
+            </label>
 
-          <label>
-            Phone Number:
-            <input
-              type="tel"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              required
-            />
-          </label>
+            <label>
+              Location:
+              <input
+                type="text"
+                name="Location"
+                value={formElement.Location}
+                onChange={(e) =>
+                  setFormElement({ ...formElement, Location: e.target.value })
+                }
+                required
+              />
+            </label>
 
-          <label>
-            Order Description:
-            <textarea
-              name="description"
-              value={formData.description}
-              onChange={handleChange}
-              required
-            />
-          </label>
+            <label>
+              Phone Number:
+              <input
+                type="tel"
+                name="Phone"
+                value={formElement.Phone}
+                onChange={(e) =>
+                  setFormElement({ ...formElement, Phone: e.target.value })
+                }
+                required
+              />
+            </label>
 
-          <button type="submit">Submit Order</button>
-        </form>
+            <label>
+              Order Description:
+              <textarea
+                name="OrderDescription"
+                value={formElement.OrderDescription}
+                onChange={(e) =>
+                  setFormElement({
+                    ...formElement,
+                    OrderDescription: e.target.value,
+                  })
+                }
+                required
+              />
+            </label>
+
+            <button type="submit" disabled={loading}>
+              {loading ? <div className="spinner"></div> : "Submit Order"}
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );

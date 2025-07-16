@@ -1,0 +1,39 @@
+.pasteries{
+    width: 85%;
+    margin: auto;
+    margin-top: 5rem;
+    padding-top: 2rem;
+    background-color: white;
+    
+}
+.pasteries h2{
+    font-size: 2.4rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
+    text-align: center;
+    background: linear-gradient(to right, black, rgb(255, 166, 0), purple);
+    background-clip: text;
+    color: transparent;
+}
+.pasteries-container{
+    display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+@media(max-width: 800px){
+    .pasteries h2{
+        font-size: 1.6rem;
+    }
+    .pasteries-container{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+@media(max-width: 500px){
+.pasteries-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+}

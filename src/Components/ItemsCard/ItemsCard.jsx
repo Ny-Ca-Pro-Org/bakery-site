@@ -15,23 +15,23 @@ const ItemsCard = () => {
         <button>Read more</button>
       </div>
       <div className="items-container">
-        <div className="items">
+        <div className="item">
           <Link to="/wedding">
             <img src={wedding} alt="product image" />
           </Link>
           <h3>Wedding</h3>
         </div>
-        <div className="items">
+        <div className="item">
           <Link to="/birthday">
             <img src={birthday} alt="product image" />
           </Link>
           <h3>Birthday</h3>
         </div>
-        <div className="items">
+        <div className="item">
           <Link to={"/ceremony"}>
             <img src={pastries} alt="product image" />
           </Link>
-          <h3>all pastries</h3>
+          <h3>All Pastries</h3>
         </div>
       </div>
     </div>
