@@ -1,5 +1,5 @@
 import "./BreadCrums.css";
-import breadcrum from "../../Assets/breadcrum_arrow.png";
+import breadcrum from "../../assets/breadcrum_arrow.png";
 import Product from "../../Pages/Product";
 const BreadCrums = ({ product }) => {
   return (
